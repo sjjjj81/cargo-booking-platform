@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARGO-BOOK // Logistics Platform</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="bar">
+    <h1>◈ CARGO-BOOK</h1>
+    <nav>
+      <button id="book" class="navbtn active" onclick="show('book')">BOOK CARGO</button>
+      <button id="list" class="navbtn" onclick="show('list')">MY BOOKINGS</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- BOOKING FORM -->
+    <section id="book-view" class="card">
+      <form id="cargoForm" onsubmit="submitBooking(event)">
+        <fieldset class="grp"><legend>CUSTOMER</legend>
+          <input id="name" required placeholder="Full name" />
+          <input id="phone" required placeholder="Phone" />
+          <input id="email" type="email" required placeholder="Email" />
+        </fieldset>
+
+        <fieldset class="grp"><legend>CARGO</legend>
+          <input id="cargoName" required placeholder="Cargo name / type" />
+          <textarea id="desc" rows="2" placeholder="Description (optional)"></textarea>
+        </fieldset>
+
+        <fieldset class="grp"><legend>DIMENSIONS (cm)</legend>
+          <div class="row">
+            <input id="L" type="number" min="0" step="0.1" required placeholder="Length" />
+            <input id="W" type="number" min="0" step="0.1" required placeholder="Width" />
+            <input id="H" type="number" min="0" step="0.1" required placeholder="Height" />
+          </div>
+        </fieldset>
+
+        <fieldset class="grp"><legend>WEIGHT & DESTINATION</legend>
+          <div class="row">
+            <input id="weight" type="number" min="0" step="0.1" required placeholder="Weight (kg)" />
+            <select id="service">
+              <option value="Road">Road</option>
+              <option value="Air">Air</option>
+            </select>
+          </div>
+          <input id="pickup" required placeholder="Pickup address" />
+          <input id="delivery" required placeholder="Delivery address" />
+        </fieldset>
+
+        <label class="check"><input id="insurance" type="checkbox" /> Insurance (+10)</label>
+
+        <div class="quote" id="quote">
+          <div>CHARGEABLE WEIGHT: <b id="qW">0.00</b> kg</div>
+          <div>RATE: <b id="qR">2.00</b> /kg + flat <b id="qF">50</b></div>
+          <div>INSURANCE: <b id="qI">0</b></div>
+          <div class="tot">TOTAL: <b id="qT">0.00</b></div>
+        </div>
+
+        <button type="submit" class="big">► BOOK NOW</button>
+        <p id="msg" class="msg"></p>
+      </form>
+    </section>
+
+    <!-- BOOKINGS DASHBOARD -->
+    <section id="list-view" class="card hidden">
+      <div class="listhead">
+        <h2>SHIPMENT REGISTRY</h2>
+        <button class="small" onclick="clearAll()">CLEAR ALL</button>
+      </div>
+      <div id="bookings"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
