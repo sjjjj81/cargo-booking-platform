@@ -77,19 +77,37 @@
             <select id="service">
               <option value="Road">Road</option>
               <option value="Air">Air</option>
+              <option value="Ship">Shipment</option>
             </select>
           </div>
           <input id="pickup" required placeholder="Pickup address" />
           <input id="delivery" required placeholder="Delivery address" />
+          <div class="row">
+           <select id="couriercategory">
+             <option value="domestic">Domestic Courier (India)</option>
+             <option value="international">International Courier</option>
+           </select>
+           <select id="couriertype"></select>
+          </div>
         </fieldset>
 
-        <label class="check"><input id="insurance" type="checkbox" /> Insurance (+10)</label>
+        <label class="check"><input id="insurance" type="checkbox" /> Insurance</label>
+        <div id="insuranceDetails" hidden>
+          <div class="row">
+            <input id="cargoValue" type="number" min="0" step="0.01" placeholder="Parcel value (₹)" />
+            <select id="insuranceRisk" aria-label="Insurance risk category">
+              <option value="low">Low risk (Sturdy Goods)— 0.25%</option>
+              <option value="medium">Medium risk (General Merchandise) — 0.50%</option>
+              <option value="high">High risk (Fragile & Luxury items) — 5.00%</option>
+            </select>
+          </div>
+        </div>
 
         <div class="quote" id="quote">
           <div>CHARGEABLE WEIGHT: <b id="qW">0.00</b> kg</div>
-          <div>RATE: <b id="qR">2.00</b> /kg + flat <b id="qF">50</b></div>
+          <div><span>RATE:</span><span class="rates"><b id="qF">₹0.00</b> upto 1KG + <b id="qR">₹0.00</b> / extra KG</span></div>
           <div>INSURANCE: <b id="qI">0</b></div>
-          <div class="tot">TOTAL: <b id="qT">0.00</b></div>
+          <div class="tot">TOTAL: <b id="qT">₹0.00</b></div>
         </div>
 
         <button type="submit" class="big">► BOOK NOW</button>
